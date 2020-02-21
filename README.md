@@ -6,6 +6,7 @@ MVVM Architecture, Retrofit, Koin
 ----------------------------------------------------------------------------------------------------
 
 Bonus objectives:
+
 For tracking and authenticating users, I would use analytic's tools provided by Google's Firestore and Firebase.
 
 Tier 1: 
