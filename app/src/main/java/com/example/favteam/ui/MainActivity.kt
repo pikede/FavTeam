@@ -1,30 +1,73 @@
 package com.example.favteam.ui
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.ImageView
+import android.os.Handler
+import android.view.View
+import android.widget.ProgressBar
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.favteam.Models.Team
 import com.example.favteam.Models.Teams
 import com.example.favteam.R
 import com.example.favteam.viewmodel.FavTeamViewModel
-import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_main.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : AppCompatActivity() {
 
     private val favTeamViewModel: FavTeamViewModel by viewModel()
+    private lateinit var mAdapter: DataAdapter
+    private lateinit var dataset: List<Team>
+    private lateinit var progress_Bar: ProgressBar
+    private lateinit var recyclerView: RecyclerView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        progress_Bar = progressBar
+
+        initRecycleView()
         initViewModel()
         btnSearch.setOnClickListener { setupSearchButton() }
     }
 
+    private fun initRecycleView() {
+        dataset = ArrayList<Team>()
+        mAdapter = DataAdapter(dataset)
+        recyclerView = recycle_view
+        recyclerView.layoutManager = LinearLayoutManager(this)
+        recyclerView.visibility = View.GONE
+        recyclerView.adapter = mAdapter
+    }
+
     private fun setupSearchButton() {
-        favTeamViewModel.getLaunches(entered_word.text.toString())
+        if (entered_word.text.isNotEmpty()) {
+            setUpProgressBar()
+            favTeamViewModel.getLaunches(entered_word.text.toString())
+        }
+    }
+
+    private fun setUpProgressBar() {
+        var handlerThread = Handler()
+        var progressStatus = 0
+        progress_Bar.visibility = View.VISIBLE
+        Thread(Runnable {
+            run {
+                while (progressStatus < 100) {
+                    progressStatus += 25
+                    android.os.SystemClock.sleep(200)
+                    handlerThread.post { progress_Bar.progress = progressStatus }
+                }
+                handlerThread.post {
+                    progress_Bar.setProgress(100)
+                    progress_Bar.visibility = View.GONE
+                }
+            }
+        }).start()
+        recyclerView.visibility = View.VISIBLE
     }
 
     fun initViewModel() {
@@ -32,18 +75,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun populateUI(teams: Teams) {
-        val arguments = Bundle()
-        val imageUri = teams.teams?.get(0)?.strStadiumThumb
-
-        arguments.putString("team_name", teams.teams?.get(0)?.strTeam ?: "Default ID")
-        arguments.putString("imageUri", imageUri.toString() ?: "imageUri")
-//        arguments.putString("team_name", teams.teams?.get(0)?.strTeam ?: "Default ID")
-
-        val fragment = TeamDetailFragment()
-        fragment.arguments = arguments
-        supportFragmentManager.beginTransaction()
-            .replace(R.id.team_detail_container, fragment)
-            .commit()
-
+        if (entered_word.text.isNotEmpty()) {
+            dataset = teams.teams ?: emptyList()
+            mAdapter.updateDataSet(dataset)
+        }
     }
 }

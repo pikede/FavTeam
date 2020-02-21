@@ -36,7 +36,7 @@ data class Team(
     @SerializedName("strRSS")
     var strRSS: String?,
     @SerializedName("strStadiumThumb")
-    var strStadiumThumb: Any?,
+    var strStadiumThumb: String?,
     @SerializedName("strStadiumDescription")
     var strStadiumDescription: String?,
     @SerializedName("strStadiumLocation")

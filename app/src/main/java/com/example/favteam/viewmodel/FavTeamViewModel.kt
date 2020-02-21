@@ -5,18 +5,10 @@ import androidx.lifecycle.ViewModel
 import com.example.favteam.Models.Teams
 import com.example.favteam.repository.Repository
 
-
 class FavTeamViewModel(private val repository: Repository) : ViewModel() {
-//    private var repository = Repository()
-
-    val wordDefinitions = MutableLiveData<Teams>()
 
     fun getLaunches(enteredName: String): MutableLiveData<Teams> {
-        if (enteredName.isNotEmpty()) {
-            repository.getLaunches(enteredName)
-        } else {
-            repository.getLaunches("Barcelona") //default to barcelona if no text entered
-        }
+        repository.getLaunches(enteredName)
         return repository.getLaunchList()
     }
 
