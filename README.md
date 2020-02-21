@@ -33,5 +33,6 @@ Features:
 Improvements that can be made:
 - Espresso tests
 - base Url and api key should have been put into config files 
+- remove appending of strings! (due to time constraints)
 
  
