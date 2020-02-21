@@ -14,11 +14,13 @@ import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.team_details.view.*
 import kotlin.random.Random
 
-class DataAdapter(private var dataset: List<Team>) : RecyclerView.Adapter<DataAdapter.ViewHolder>() {
+class DataAdapter(private var dataset: List<Team>) :
+    RecyclerView.Adapter<DataAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(
-            R.layout.team_details, parent, false)
+            R.layout.team_details, parent, false
+        )
         return ViewHolder(view)
     }
 
@@ -62,8 +64,9 @@ class DataAdapter(private var dataset: List<Team>) : RecyclerView.Adapter<DataAd
             itemView.team_name.text = "Team Name: " + teams.strTeam
             itemView.league.text = "Team League: " + teams.strLeague
             itemView.team_alternate_Name.text = "Team Alternate Name: " + teams.strAlternate
-            itemView.team_stadium.text = "Team Stadium: "+ teams.strStadium
-            itemView.team_stadium_location.text = "Team Stadium Location: " + teams.strStadiumLocation
+            itemView.team_stadium.text = "Team Stadium: " + teams.strStadium
+            itemView.team_stadium_location.text =
+                "Team Stadium Location: " + teams.strStadiumLocation
             itemView.stadium_capacity.text = "Stadium Capacity: " + teams.intStadiumCapacity
             itemView.team_description.text = "Team Description: " + teams.strDescriptionEN
         }
