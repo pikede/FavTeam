@@ -60,15 +60,14 @@ class DataAdapter(private var dataset: List<Team>) :
                 Picasso.get().load(team_Stadium).fit().into(itemView.team_stadium_img as ImageView)
             }
 
-            itemView.team_id.text = "Team Id: " + teams.idTeam
-            itemView.team_name.text = "Team Name: " + teams.strTeam
-            itemView.league.text = "Team League: " + teams.strLeague
-            itemView.team_alternate_Name.text = "Team Alternate Name: " + teams.strAlternate
-            itemView.team_stadium.text = "Team Stadium: " + teams.strStadium
-            itemView.team_stadium_location.text =
-                "Team Stadium Location: " + teams.strStadiumLocation
-            itemView.stadium_capacity.text = "Stadium Capacity: " + teams.intStadiumCapacity
-            itemView.team_description.text = "Team Description: " + teams.strDescriptionEN
+            itemView.team_id.text = teams.idTeam
+            itemView.team_name.text = teams.strTeam
+            itemView.league.text = teams.strLeague
+            itemView.team_alternate_name.text = teams.strAlternate
+            itemView.team_stadium.text = teams.strStadium
+            itemView.team_stadium_location.text = teams.strStadiumLocation
+            itemView.stadium_capacity.text = teams.intStadiumCapacity
+            itemView.team_description.text = teams.strDescriptionEN
         }
     }
 }
