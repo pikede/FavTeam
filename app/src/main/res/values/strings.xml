@@ -17,5 +17,13 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="appbar_scrolling_view_behavior" translatable="false">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
 
+    <string name="team_id_text">Team Id: </string>
+    <string name="team_name_text">Team Name: </string>
+    <string name="team_league_text">Team League: </string>
+    <string name="team_alternate_name_text">Team Alternate Name: </string>
+    <string name="team_stadium_text">Team Stadium: </string>
+    <string name="team_stadium_location_text">Team Stadium Location: </string>
+    <string name="team_stadium_capacity_text">Team Stadium Capacity: </string>
+    <string name="team_description_text">Team Description: </string>
 
 </resources>
