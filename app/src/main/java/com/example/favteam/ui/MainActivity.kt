@@ -38,7 +38,9 @@ class MainActivity : AppCompatActivity() {
         dataset = ArrayList<Team>()
         mAdapter = DataAdapter(dataset)
         recyclerView = recycle_view
-        recyclerView.layoutManager = LinearLayoutManager(this)
+        val linearLayoutManager = LinearLayoutManager(this)
+        linearLayoutManager.orientation = LinearLayoutManager.HORIZONTAL
+        recyclerView.layoutManager = linearLayoutManager
         recyclerView.visibility = View.GONE
         recyclerView.adapter = mAdapter
     }
