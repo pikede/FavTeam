@@ -5,17 +5,17 @@ MVVM Architecture, Retrofit, Koin
 
 ----------------------------------------------------------------------------------------------------
 
-Incoming features:
+Potential incoming features:
 
-For tracking and authenticating users, I would use analytic's tools provided by Google's Firestore and Firebase.
+Analytic and authentication using Google's Firestore and Firebase.
 
 Tier 1: 
-The application would track each user's favorite team, favorite players and their stats, 
+The application would track each user's favorite team, favorite players, and their stats, 
 and provide them with regular updates per month for a $5.99 subscription per month for their first team. 
 This would also include live in-game stats and updates. Each additional team would be 0.99 cents. 
 
 Tier 2: 
-The application would provide highlights, live mobile wallpapers, behind the scenes videos of training, 
+The application would provide highlights, live mobile wallpapers, behind-the-scenes videos of training, 
 game preparation videos, and team traveling videos for $9.99 per month.
 
 
